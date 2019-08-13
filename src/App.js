@@ -17,22 +17,27 @@ class App extends React.Component {
 
   componentWillMount() { //right before fired into DOm
     console.log('componentWillMount')
+    this.setState({m: 2})
   }
 
   render() {
     console.log('render');
-    return <button onClick={this.update}>{this.state.val}</button>
+    return <button onClick={this.update}>
+        {this.state.val * this.state.m}
+    </button>
   }
 
   componentDidMount() { //component is mounted to dom
       console.log('componentDidMount')
+      this.inc = setInterval(this.update, 500)
   }
 
 
   componentWillUnmount() { //component is mounted to dom
         console.log('componentWillUnmount')
+        clearInterval(this.inc)
       }
-    }
+  }
 
 class Wrapper extends React.Component {
   mount() {
