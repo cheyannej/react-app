@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 
 class App extends React.Component {
   render() {
-    return <Button>I <Heart /> React</Button>
+    return <Title text="The Text"/>
   }
 }
 
-const Button = (props) => <button>{props.children}</button>
+const Title = (props) => <h1>Title: {props.text}</h1>
 
 
-class Heart extends React.Component {
-    render() {
-      return <span>&hearts;</span>
+Title.propTypes = {
+  text(props, propName, component) {
+    //validation
+    if(!(propName in props)) { //propName not provided
+      return new Error('missing ${propName}')
+    }
+    if(props[propName].length < 6) {
+      return new Error ('${propName} was too short')
     }
   }
+}
 
 export default App
