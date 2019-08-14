@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom'; //library allows to place comp in context of D
 import App from './App';
 
 ReactDOM.render(
-  <App cat={5} />,
+  <App />,
   document.getElementById('root')
 );
